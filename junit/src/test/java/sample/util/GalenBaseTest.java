@@ -5,11 +5,9 @@ import static java.util.Arrays.asList;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import junit.framework.TestCase;
 import net.mindengine.galen.api.Galen;
 import net.mindengine.galen.reports.GalenTestInfo;
 import net.mindengine.galen.reports.model.LayoutObject;
@@ -19,6 +17,7 @@ import net.mindengine.galen.reports.model.LayoutSpec;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.Dimension;
@@ -38,7 +37,7 @@ import sample.util.junit.GalenTestRunner;
  * mvn verify -Dselenium.grid=http://grid-ip:4444/wd/hub
  */
 @RunWith(value = GalenTestRunner.class)
-public abstract class GalenBaseTest extends TestCase {
+public abstract class GalenBaseTest  {
 
 	private static final Logger LOG = LoggerFactory.getLogger("GalenBaseTest");
 
@@ -123,6 +122,13 @@ public abstract class GalenBaseTest extends TestCase {
 		return WEBDRIVER;
 
 	}
+
+  
+  @BeforeClass
+  public static void setUp() {
+     System.setProperty("galen.config.file", "src/test/resources/galen.config");
+  } 
+
 
 	@AfterClass
 	public static void quitDriver() throws MalformedURLException {

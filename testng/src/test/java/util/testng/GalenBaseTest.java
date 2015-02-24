@@ -103,8 +103,13 @@ public abstract class GalenBaseTest {
 			throw new RuntimeException(errorDetails.toString());
 		}
 	}
+	
+  @BeforeMethod(alwaysRun = true)
+  public void setUp(final Object[] args) throws MalformedURLException {
+     System.setProperty("galen.config.file", "src/test/resources/galen.config");
+     setUpBrowser(args);
+  }	
 
-	@BeforeMethod(alwaysRun = true)
 	public void setUpBrowser(final Object[] args) throws MalformedURLException {
 		if (args != null && args.length > 0) {
 			if (args[0] != null && args[0] instanceof TestDevice) {
