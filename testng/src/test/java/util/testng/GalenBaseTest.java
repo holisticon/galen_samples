@@ -47,9 +47,8 @@ public abstract class GalenBaseTest {
 
 	public void verifyPage(final String uri, final TestDevice pDevice,
 			final String specPath) throws Exception {
-		final String name = getCaller() + " on " + pDevice;
 		load(uri);
-		checkLayout(specPath, pDevice, name);
+		checkLayout(specPath, pDevice, getCaller());
 	}
 
 	public void load(final String uri) throws MalformedURLException {

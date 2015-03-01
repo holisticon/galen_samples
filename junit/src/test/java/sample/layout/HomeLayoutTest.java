@@ -21,7 +21,7 @@ public class HomeLayoutTest extends GalenBaseTest {
 	}
 
 	@Test
-	public void shouldShowCorrectBaseLayout() throws Exception {
+	public void testHomePage() throws Exception {
 		verifyPage("/", "/specs/homePageLayout.spec");
 	}
 

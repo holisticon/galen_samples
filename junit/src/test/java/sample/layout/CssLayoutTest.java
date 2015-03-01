@@ -21,7 +21,7 @@ public class CssLayoutTest extends GalenBaseTest {
 	}
 
 	@Test
-	public void shouldShowCorrectBaseLayout() throws Exception {
+	public void testCssPage() throws Exception {
 		verifyPage("/css","/specs/cssPageLayout.spec");
 	}
 

@@ -21,7 +21,7 @@ public class GalenReportsContainer {
 		return _instance;
 	}
 
-	public GalenTestInfo registerTest(String method) {
+	public GalenTestInfo registerTest(final String method,final List<String> tags) {
 		GalenTestInfo testInfo = GalenTestInfo.fromString(method);
 		tests.get().add(testInfo);
 		return testInfo;

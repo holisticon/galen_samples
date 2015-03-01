@@ -14,7 +14,7 @@ import util.testng.GalenBaseTest;
 public class CssLayoutTest extends GalenBaseTest {
 
 	@Test(dataProvider = "devices")
-	public void shouldShowCorrectBaseLayout(final TestDevice device) throws Exception {
+	public void testCssPage(final TestDevice device) throws Exception {
 		verifyPage("/css",device,"/specs/cssPageLayout.spec");
 	}
 

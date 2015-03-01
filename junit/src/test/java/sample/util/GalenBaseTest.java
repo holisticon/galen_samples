@@ -56,9 +56,8 @@ public abstract class GalenBaseTest  {
 
 	public void verifyPage(final String uri, final String specPath)
 	    throws Exception {
-		final String name = getCaller() + " on " + this.device;
 		load(uri);
-		checkLayout(specPath, name);
+		checkLayout(specPath, getCaller());
 	}
 
 	public void checkLayout(final String specPath, final String name)
@@ -74,7 +73,7 @@ public abstract class GalenBaseTest  {
 		    null,
 		    new Properties(), null);
 		layoutReport.setTitle(name);
-		GalenTestInfo test = GalenReportsContainer.get().registerTest(name);
+		GalenTestInfo test = GalenReportsContainer.get().registerTest(name, device.getTags());
 		test.getReport().layout(layoutReport, name);
 		if (layoutReport.errors() > 0) {
 			final StringBuffer errorDetails = new StringBuffer();
@@ -152,11 +151,10 @@ public abstract class GalenBaseTest  {
 	}
 
 	private static String getCaller() throws ClassNotFoundException {
-		Throwable t = new Throwable();
-		StackTraceElement[] elements = t.getStackTrace();
-		String callerMethodName = elements[2].getMethodName();
-		String callerClassName = elements[2].getClassName();
-		return callerClassName + "->" + callerMethodName;
+	  final Throwable t = new Throwable();
+		final StackTraceElement[] elements = t.getStackTrace();
+		final String callerMethodName = elements[2].getMethodName();
+		return callerMethodName;
 	}
 
 	public static class TestDevice {

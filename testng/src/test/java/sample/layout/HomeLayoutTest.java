@@ -14,7 +14,7 @@ import util.testng.GalenBaseTest;
 public class HomeLayoutTest extends GalenBaseTest {
 
 	@Test(dataProvider = "devices")
-	public void shouldShowCorrectBaseLayout(final TestDevice device) throws Exception {
+	public void testHomePage(final TestDevice device) throws Exception {
 		verifyPage("/", device, "/specs/homePageLayout.spec");
 	}
 
