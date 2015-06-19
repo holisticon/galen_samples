@@ -9,26 +9,26 @@ import net.mindengine.galen.reports.GalenTestInfo;
 
 public class GalenReportsContainer {
 
-	private static final GalenReportsContainer _instance = new GalenReportsContainer();
+    private static final GalenReportsContainer _instance = new GalenReportsContainer();
 
-	private final ThreadLocal<Collection<GalenTestInfo>> tests = new ThreadLocal<Collection<GalenTestInfo>>();
+    private final ThreadLocal<Collection<GalenTestInfo>> tests = new ThreadLocal<Collection<GalenTestInfo>>();
 
-	private GalenReportsContainer() {
-		tests.set(new HashSet<GalenTestInfo>());
-	}
+    private GalenReportsContainer() {
+        tests.set(new HashSet<GalenTestInfo>());
+    }
 
-	public static final GalenReportsContainer get() {
-		return _instance;
-	}
+    public static final GalenReportsContainer get() {
+        return _instance;
+    }
 
-	public GalenTestInfo registerTest(String method) {
-		GalenTestInfo testInfo = GalenTestInfo.fromString(method);
-		tests.get().add(testInfo);
-		return testInfo;
-	}
+    public GalenTestInfo registerTest(String method) {
+        GalenTestInfo testInfo = GalenTestInfo.fromString(method);
+        tests.get().add(testInfo);
+        return testInfo;
+    }
 
-	public List<GalenTestInfo> getAllTests() {
-		return new ArrayList<GalenTestInfo>(tests.get());
-	}
+    public List<GalenTestInfo> getAllTests() {
+        return new ArrayList<GalenTestInfo>(tests.get());
+    }
 
 }

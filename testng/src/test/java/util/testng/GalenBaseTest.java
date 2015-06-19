@@ -73,14 +73,14 @@ public abstract class GalenBaseTest {
 		layoutReport.setTitle(pName);
 		test.getReport().layout(layoutReport, pName);
 		if (layoutReport.errors() > 0) {
-			final StringBuffer errorDetails = new StringBuffer();
+			final StringBuilder errorDetails = new StringBuilder();
 			for (LayoutSection layoutSection : layoutReport.getSections()) {
-				final StringBuffer layoutDetails = new StringBuffer();
+				final StringBuilder layoutDetails = new StringBuilder();
 				layoutDetails.append("\n").append("Layout Section: ")
 						.append(layoutSection.getName()).append("\n");
 				for (LayoutObject layoutObject : layoutSection.getObjects()) {
 					boolean hasErrors = false;
-					final StringBuffer errorElementDetails = new StringBuffer();
+					final StringBuilder errorElementDetails = new StringBuilder();
 					errorElementDetails.append("  Element: ").append(
 							layoutObject.getName());
 					for (LayoutSpec layoutSpec : layoutObject.getSpecs()) {
